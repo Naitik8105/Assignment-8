@@ -1,38 +1,6 @@
 #include <stdio.h>
-int main()
+void func(int m, int n, int p, int q, int (*a)[n], int (*b)[q], int (*c)[q])
 {
-    int m, n, p, q;
-    printf("Enter the order of first matrix(m,n) : ");
-    scanf("%d%d", &m, &n);
-    printf("Enter the order of second matrix(p,q) : ");
-    scanf("%d%d", &p, &q);
-
-    if (n != p)
-    {
-        printf("Matrix multiplication is not possible\n");
-        return 0;
-    }
-
-    int a[m][n], b[p][q], c[m][q];
-    printf("Enter matrix A : \n");
-
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            scanf("%d", &(*(*(a + i) + j)));
-        }
-    }
-
-    printf("Enter matrix B : \n");
-    for (int i = 0; i < p; i++)
-    {
-        for (int j = 0; j < q; j++)
-        {
-            scanf("%d", &(*(*(b + i) + j)));
-        }
-    }
-
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < q; j++)
@@ -46,7 +14,37 @@ int main()
             }
         }
     }
-
+}
+int main()
+{
+    int m, n, p, q;
+    printf("Enter the order of first matrix(m,n) : ");
+    scanf("%d%d", &m, &n);
+    printf("Enter the order of second matrix(p,q) : ");
+    scanf("%d%d", &p, &q);
+    if (n != p)
+    {
+        printf("Matrix multiplication is not possible\n");
+        return 0;
+    }
+    int a[m][n], b[p][q], c[m][q];
+    printf("Enter matrix A : ");
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            scanf("%d", &(*(*(a + i) + j)));
+        }
+    }
+    printf("Enter matrix B : ");
+    for (int i = 0; i < p; i++)
+    {
+        for (int j = 0; j < q; j++)
+        {
+            scanf("%d", &(*(*(b + i) + j)));
+        }
+    }
+    func(m, n, p, q, a, b, c);
     printf("Resultant matrix after multiplication : \n");
     for (int i = 0; i < m; i++)
     {
